@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/primary">
+        <item
+            android:id="@+id/fragment00"
+            android:title="@string/subjects" />
+
+        <item
+            android:id="@+id/fragment01"
+            android:title="@string/simple_01" />
+
+        <item
+            android:id="@+id/fragment02"
+            android:title="@string/simple_02" />
+
+        <item
+            android:id="@+id/fragment03"
+            android:title="@string/simple_03" />
+    </group>
+
+    <group android:id="@+id/second">
+        <item
+            android:id="@+id/fragment04"
+            android:title="@string/simple_04" />
+
+        <item
+            android:id="@+id/fragment05"
+            android:title="@string/simple_05" />
+
+        <item
+            android:id="@+id/fragment06"
+            android:title="@string/simple_06" />
+
+        <item
+            android:id="@+id/fragment07"
+            android:title="@string/simple_07" />
+    </group>
+</menu>

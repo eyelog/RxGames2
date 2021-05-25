@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">RxGames2</string>
+
+    <string name="simple_00">Simple_00</string>
+    <string name="simple_01">Simple_01</string>
+    <string name="simple_02">Simple_02</string>
+    <string name="simple_03">Simple_03</string>
+    <string name="simple_04">Simple_04</string>
+    <string name="simple_05">Simple_05</string>
+    <string name="simple_06">Simple_06</string>
+    <string name="simple_07">Simple_07</string>
+
+    <!--Subjects-->
+    <string name="subjects">Subjects</string>
+    <string name="subjects_publish">Publish subject</string>
+    <string name="subjects_replay">Replay subject</string>
+    <string name="subjects_behavior">Behavior subject</string>
+    <string name="subjects_async">Async subject</string>
+</resources>

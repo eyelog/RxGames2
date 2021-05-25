@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/fragment00">
+
+    <fragment
+        android:id="@+id/fragment00"
+        android:name="ru.eyelog.rxgames2.firstgroup.simple_00.Fragment00"
+        android:label="@string/subjects" />
+    <fragment
+        android:id="@+id/fragment01"
+        android:name="ru.eyelog.rxgames2.firstgroup.simple_01.Fragment01"
+        android:label="Fragment01" />
+    <fragment
+        android:id="@+id/fragment02"
+        android:name="ru.eyelog.rxgames2.firstgroup.simple_02.Fragment02"
+        android:label="Fragment02" />
+    <fragment
+        android:id="@+id/fragment03"
+        android:name="ru.eyelog.rxgames2.firstgroup.simple_03.Fragment03"
+        android:label="Fragment03" />
+    <fragment
+        android:id="@+id/fragment04"
+        android:name="ru.eyelog.rxgames2.secondgroup.simple_04.Fragment04"
+        android:label="Fragment04" />
+    <fragment
+        android:id="@+id/fragment05"
+        android:name="ru.eyelog.rxgames2.secondgroup.simple_05.Fragment05"
+        android:label="Fragment05" />
+    <fragment
+        android:id="@+id/fragment06"
+        android:name="ru.eyelog.rxgames2.secondgroup.simple_06.Fragment06"
+        android:label="Fragment06" />
+    <fragment
+        android:id="@+id/fragment07"
+        android:name="ru.eyelog.rxgames2.secondgroup.simple_07.Fragment07"
+        android:label="Fragment07" />
+</navigation>

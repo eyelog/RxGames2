@@ -1,0 +1,2 @@
+rootProject.name = "RxGames2"
+include ':app'
