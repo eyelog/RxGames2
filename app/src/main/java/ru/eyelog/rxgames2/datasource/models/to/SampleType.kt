@@ -1,4 +1,4 @@
-package ru.eyelog.rxgames2.firstgroup.simple_01.models.to
+package ru.eyelog.rxgames2.datasource.models.to
 
 enum class SampleType(val code: String) {
     FIRST_TYPE ("first type"),

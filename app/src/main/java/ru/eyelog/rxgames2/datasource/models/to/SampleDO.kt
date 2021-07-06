@@ -1,4 +1,4 @@
-package ru.eyelog.rxgames2.firstgroup.simple_01.models.to
+package ru.eyelog.rxgames2.datasource.models.to
 
 data class SampleDO(
     val id: Long,

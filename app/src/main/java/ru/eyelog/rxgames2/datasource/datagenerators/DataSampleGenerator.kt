@@ -1,11 +1,11 @@
-package ru.eyelog.rxgames2.firstgroup.simple_01.repo
+package ru.eyelog.rxgames2.datasource.datagenerators
 
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.dto.SampleDTO
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.dto.SampleSubDTO
+import ru.eyelog.rxgames2.datasource.models.dto.SampleDTO
+import ru.eyelog.rxgames2.datasource.models.dto.SampleSubDTO
 import javax.inject.Inject
 import kotlin.random.Random
 
-class DataGenerator @Inject constructor() {
+class DataSampleGenerator @Inject constructor() {
 
     private val someTypes = arrayListOf("first type", "second type", "third type")
 

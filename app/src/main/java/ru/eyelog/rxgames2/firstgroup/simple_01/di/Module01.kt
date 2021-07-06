@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Module
 import dagger.Provides
 import ru.eyelog.rxgames2.firstgroup.simple_01.ViewModel01
-import ru.eyelog.rxgames2.firstgroup.simple_01.mapper.SimpleMapper
-import ru.eyelog.rxgames2.firstgroup.simple_01.repo.DataGenerator
+import ru.eyelog.rxgames2.datasource.mappers.simple.SimpleMapper
+import ru.eyelog.rxgames2.datasource.datagenerators.DataSampleGenerator
 
 @Module
 class Module01 {
@@ -18,7 +18,7 @@ class Module01 {
     ): ViewModel01 = ViewModelProvider(fragment, factory).get(ViewModel01::class.java)
 
     @Provides
-    fun provideDataGenerator() = DataGenerator()
+    fun provideDataGenerator() = DataSampleGenerator()
 
     @Provides
     fun provideSimpleMapper() = SimpleMapper()

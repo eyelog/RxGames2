@@ -1,4 +1,4 @@
-package ru.eyelog.rxgames2.firstgroup.simple_01.models.dto
+package ru.eyelog.rxgames2.datasource.models.dto
 
 data class SampleSubDTO (
     val id: Long,

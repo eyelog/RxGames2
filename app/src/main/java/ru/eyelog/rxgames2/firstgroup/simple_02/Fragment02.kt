@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_main.*
 import ru.eyelog.rxgames2.R
-import ru.eyelog.rxgames2.adapter.RVAdapter
-import ru.eyelog.rxgames2.firstgroup.simple_01.di.DaggerComponent01
+import ru.eyelog.rxgames2.adapter.RVAdapterSampleData
 import ru.eyelog.rxgames2.firstgroup.simple_02.di.DaggerComponent02
 import javax.inject.Inject
 
@@ -19,7 +18,7 @@ class Fragment02: Fragment() {
     lateinit var viewModel: ViewModel02
 
     @Inject
-    lateinit var adapter: RVAdapter
+    lateinit var adapter: RVAdapterSampleData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +40,8 @@ class Fragment02: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        lifecycle.addObserver(viewModel)
 
         rvMainList.apply {
             adapter = this@Fragment02.adapter

@@ -1,23 +1,49 @@
 package ru.eyelog.rxgames2.firstgroup.simple_02
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
+import ru.eyelog.rxgames2.datasource.datagenerators.DataSampleGenerator
+import ru.eyelog.rxgames2.datasource.mappers.essential.SampleEssentialMapper
+import ru.eyelog.rxgames2.datasource.mappers.essential.essentialMap
+import ru.eyelog.rxgames2.datasource.mappers.simple.SimpleMapper
+import ru.eyelog.rxgames2.datasource.models.dto.SampleDTO
+import ru.eyelog.rxgames2.datasource.models.to.SampleDO
+import javax.inject.Inject
 
-class ViewModel02: ViewModel() {
+class ViewModel02 @Inject constructor(
+    private val dataSampleGenerator: DataSampleGenerator,
+    private val sampleEssentialMapper: SampleEssentialMapper
+): ViewModel(), LifecycleObserver {
 
-    val sampleLiveData: LiveData<List<String>> get() = _sampleLiveData
-    private val _sampleLiveData = MediatorLiveData<List<String>>()
+    val sampleLiveData: LiveData<List<SampleDO>> get() = _sampleLiveData
+    private val _sampleLiveData = MediatorLiveData<List<SampleDO>>()
 
-    val data = mutableListOf<String>()
+    var data = listOf<SampleDTO>()
+    var outData = listOf<SampleDO>()
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStart() {
+        data = dataSampleGenerator.getDataList(100)
+    }
 
     fun startThread(){
-        data.addAll(listOf("1","2","3"))
-        _sampleLiveData.value = data
+
+        Single.just(data)
+            .map { it.essentialMap(sampleEssentialMapper) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { data ->
+                _sampleLiveData.value = data
+            }
+            .addTo(CompositeDisposable())
     }
 
     fun cleanList() {
-        data.clear()
-        _sampleLiveData.value = data
+        outData = listOf()
+        _sampleLiveData.value = outData
     }
 }

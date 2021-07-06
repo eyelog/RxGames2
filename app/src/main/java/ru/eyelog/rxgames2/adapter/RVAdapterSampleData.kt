@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.eyelog.rxgames2.R
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.to.SampleDO
+import ru.eyelog.rxgames2.datasource.models.to.SampleDO
 
 class RVAdapterSampleData : RecyclerView.Adapter<RVAdapterSampleData.RVHolder>() {
 

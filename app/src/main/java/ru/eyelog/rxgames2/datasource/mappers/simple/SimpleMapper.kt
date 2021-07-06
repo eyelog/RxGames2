@@ -1,10 +1,10 @@
-package ru.eyelog.rxgames2.firstgroup.simple_01.mapper
+package ru.eyelog.rxgames2.datasource.mappers.simple
 
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.dto.SampleDTO
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.dto.SampleSubDTO
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.to.SampleDO
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.to.SampleSubDO
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.to.SampleType
+import ru.eyelog.rxgames2.datasource.models.dto.SampleDTO
+import ru.eyelog.rxgames2.datasource.models.dto.SampleSubDTO
+import ru.eyelog.rxgames2.datasource.models.to.SampleDO
+import ru.eyelog.rxgames2.datasource.models.to.SampleSubDO
+import ru.eyelog.rxgames2.datasource.models.to.SampleType
 
 class SimpleMapper {
 

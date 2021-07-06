@@ -1,19 +1,18 @@
 package ru.eyelog.rxgames2.firstgroup.simple_01
 
 import androidx.lifecycle.*
-import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import ru.eyelog.rxgames2.firstgroup.simple_01.mapper.SimpleMapper
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.dto.SampleDTO
-import ru.eyelog.rxgames2.firstgroup.simple_01.models.to.SampleDO
-import ru.eyelog.rxgames2.firstgroup.simple_01.repo.DataGenerator
+import ru.eyelog.rxgames2.datasource.mappers.simple.SimpleMapper
+import ru.eyelog.rxgames2.datasource.models.dto.SampleDTO
+import ru.eyelog.rxgames2.datasource.models.to.SampleDO
+import ru.eyelog.rxgames2.datasource.datagenerators.DataSampleGenerator
 
 class ViewModel01(
-    private val dataGenerator: DataGenerator,
+    private val dataSampleGenerator: DataSampleGenerator,
     private val simpleMapper: SimpleMapper
     ): ViewModel(), LifecycleObserver {
 
@@ -25,7 +24,7 @@ class ViewModel01(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart() {
-        data = dataGenerator.getDataList(500)
+        data = dataSampleGenerator.getDataList(100)
     }
 
     fun startThread(){
