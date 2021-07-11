@@ -13,6 +13,10 @@ fun <T : Any, R : Any> List<T?>?.essentialMap(mapper: EssentialMapper<T, R>): Li
 fun <T : Any, R : Any> Single<T>.essentialMap(mapper: EssentialMapper<T, R>): Single<R> =
     map(mapper)
 
+fun <T : Any, R : Any> Single<List<T>>.essentialSingleListMap(mapper: EssentialMapper<T, R>): Single<List<R>> {
+    return this.map { it.essentialMap(mapper)}
+}
+
 fun <T : Any, R : Any> Observable<T>.essentialMap(mapper: EssentialMapper<T, R>): Observable<R> =
     map(mapper)
 

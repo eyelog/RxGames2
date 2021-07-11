@@ -5,7 +5,7 @@ import ru.eyelog.rxgames2.datasource.models.dto.SampleSubDTO
 import javax.inject.Inject
 import kotlin.random.Random
 
-class DataSampleGenerator @Inject constructor() {
+class DataSampleGeneratorMaybe @Inject constructor() {
 
     private val someTypes = arrayListOf("first type", "second type", "third type")
 
@@ -18,9 +18,9 @@ class DataSampleGenerator @Inject constructor() {
             outData.add(
                 SampleDTO(
                     id = i.toLong(),
-                    name = "name $i",
-                    number = i,
-                    isChecked = Random.nextBoolean(),
+                    name = tryDoNull("name $i"),
+                    number = tryDoNull(i),
+                    isChecked = tryDoNull(Random.nextBoolean()),
                     type = someTypes[Random.nextInt(3)],
                     subData = getSubDetailsList(2)
                 )
@@ -39,14 +39,22 @@ class DataSampleGenerator @Inject constructor() {
             outData.add(
                 SampleSubDTO(
                     id = i.toLong(),
-                    name = "subname name $i",
-                    number = i,
-                    isChecked = Random.nextBoolean(),
+                    name = tryDoNull("subname name $i"),
+                    number = tryDoNull(i),
+                    isChecked = tryDoNull(Random.nextBoolean()),
                     type = someTypes[Random.nextInt(3)]
                 )
             )
         }
 
         return outData
+    }
+
+    private fun <T: Any> tryDoNull(t: T): T? {
+        return if (Random.nextBoolean()){
+            t
+        } else {
+            null
+        }
     }
 }

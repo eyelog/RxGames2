@@ -10,9 +10,9 @@ class SubSampleEssentialMapper @Inject constructor() : EssentialMapper<SampleSub
         return raw.run {
             SampleSubDO(
                 id = id,
-                name = name,
-                number =  number,
-                isChecked = isChecked,
+                name = name.orDefault(),
+                number =  number.orDefault(),
+                isChecked = isChecked.orDefault(),
                 typeMode = SampleType.valueByCode(type)
             )
         }

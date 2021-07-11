@@ -1,14 +1,11 @@
 package ru.eyelog.rxgames2.datasource.mappers.essential
 
+import android.util.Log
 import io.reactivex.functions.Function
 import kotlin.reflect.KClass
 import kotlin.reflect.full.createInstance
 import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.memberProperties
-import ru.maximumtest.androidapp.utils.Check
-import ru.maximumtest.androidapp.utils.CheckerClass
-import ru.maximumtest.androidapp.utils.ExcludeCheck
-import ru.maximumtest.androidapp.utils.NotRequired
 
 abstract class EssentialMapper<T : Any, R> : Function<T, R> {
     private val missedParams = HashSet<String>()
@@ -40,15 +37,22 @@ abstract class EssentialMapper<T : Any, R> : Function<T, R> {
             if (!skip) {
                 val value = property.getter.call(raw)
 
+                Log.i("Logcat", "            ")
+                Log.i("Logcat", "value $value")
+
                 val statuses = ArrayList<String>()
 
                 val additionChecks = globalChecks.asSequence()
                     .filter { it.first.isInstance(value) }
                     .map { it.second }
 
+                Log.i("Logcat", "additionChecks ${additionChecks.asSequence()}")
+
                 val excludedChecks = property.annotations.asSequence()
                     .mapNotNull { it as? ExcludeCheck }
                     .map { it.expressionClass }
+
+                Log.i("Logcat", "excludedChecks ${excludedChecks.asSequence()}")
 
                 if (value != null) {
                     property.annotations.asSequence()
@@ -60,9 +64,13 @@ abstract class EssentialMapper<T : Any, R> : Function<T, R> {
                         .map { it(value) }
                         .filter { it.isNotEmpty() }
                         .toCollection(statuses)
+
+                    Log.i("Logcat", "property ${property.parameters}")
                 } else {
                     statuses.add("null")
                 }
+
+                Log.i("Logcat", "statuses $statuses")
 
                 if (statuses.isNotEmpty()) {
                     missedParams.add("${property.name} $statuses")

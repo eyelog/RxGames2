@@ -1,5 +1,6 @@
 package ru.eyelog.rxgames2.datasource.mappers.simple
 
+import ru.eyelog.rxgames2.datasource.mappers.essential.orDefault
 import ru.eyelog.rxgames2.datasource.models.dto.SampleDTO
 import ru.eyelog.rxgames2.datasource.models.dto.SampleSubDTO
 import ru.eyelog.rxgames2.datasource.models.to.SampleDO
@@ -16,9 +17,9 @@ class SimpleMapper {
             outData.add(
                 SampleDO(
                     id = it.id,
-                    name = it.name,
-                    number =  it.number,
-                    isChecked = it.isChecked,
+                    name = it.name.orDefault(),
+                    number =  it.number.orDefault(),
+                    isChecked = it.isChecked.orDefault(),
                     typeMode = SampleType.valueByCode(it.type),
                     subData = mapSubDTOtoSubTO(it.subData)
                 )
@@ -35,9 +36,9 @@ class SimpleMapper {
             outData.add(
                 SampleSubDO(
                     id = it.id,
-                    name = it.name,
-                    number =  it.number,
-                    isChecked = it.isChecked,
+                    name = it.name.orDefault(),
+                    number =  it.number.orDefault(),
+                    isChecked = it.isChecked.orDefault(),
                     typeMode = SampleType.valueByCode(it.type),
                 )
             )

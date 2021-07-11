@@ -7,8 +7,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import ru.eyelog.rxgames2.datasource.datagenerators.DataSampleGenerator
+import ru.eyelog.rxgames2.datasource.datagenerators.DataSampleGeneratorMaybe
 import ru.eyelog.rxgames2.datasource.mappers.essential.SampleEssentialMapper
 import ru.eyelog.rxgames2.datasource.mappers.essential.essentialMap
+import ru.eyelog.rxgames2.datasource.mappers.essential.essentialSingleListMap
 import ru.eyelog.rxgames2.datasource.mappers.simple.SimpleMapper
 import ru.eyelog.rxgames2.datasource.models.dto.SampleDTO
 import ru.eyelog.rxgames2.datasource.models.to.SampleDO
@@ -16,6 +18,7 @@ import javax.inject.Inject
 
 class ViewModel02 @Inject constructor(
     private val dataSampleGenerator: DataSampleGenerator,
+    private val dataSampleGeneratorMaybe: DataSampleGeneratorMaybe,
     private val sampleEssentialMapper: SampleEssentialMapper
 ): ViewModel(), LifecycleObserver {
 
@@ -27,13 +30,13 @@ class ViewModel02 @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart() {
-        data = dataSampleGenerator.getDataList(100)
+        data = dataSampleGeneratorMaybe.getDataList(10)
     }
 
     fun startThread(){
 
         Single.just(data)
-            .map { it.essentialMap(sampleEssentialMapper) }
+            .essentialSingleListMap(sampleEssentialMapper)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { data ->

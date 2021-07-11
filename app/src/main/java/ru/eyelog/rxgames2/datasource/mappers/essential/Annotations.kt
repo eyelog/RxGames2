@@ -1,4 +1,4 @@
-package ru.maximumtest.androidapp.utils
+package ru.eyelog.rxgames2.datasource.mappers.essential
 
 import kotlin.reflect.KClass
 

@@ -7,6 +7,7 @@ import dagger.Provides
 import ru.eyelog.rxgames2.firstgroup.simple_01.ViewModel01
 import ru.eyelog.rxgames2.datasource.mappers.simple.SimpleMapper
 import ru.eyelog.rxgames2.datasource.datagenerators.DataSampleGenerator
+import ru.eyelog.rxgames2.datasource.datagenerators.DataSampleGeneratorMaybe
 
 @Module
 class Module01 {
@@ -19,6 +20,9 @@ class Module01 {
 
     @Provides
     fun provideDataGenerator() = DataSampleGenerator()
+
+    @Provides
+    fun provideDataGeneratorMaybe() = DataSampleGeneratorMaybe()
 
     @Provides
     fun provideSimpleMapper() = SimpleMapper()

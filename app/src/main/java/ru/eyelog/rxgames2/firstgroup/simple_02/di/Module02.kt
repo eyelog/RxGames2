@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Module
 import dagger.Provides
 import ru.eyelog.rxgames2.datasource.datagenerators.DataSampleGenerator
+import ru.eyelog.rxgames2.datasource.datagenerators.DataSampleGeneratorMaybe
 import ru.eyelog.rxgames2.datasource.mappers.essential.SampleEssentialMapper
 import ru.eyelog.rxgames2.datasource.mappers.essential.SubSampleEssentialMapper
 import ru.eyelog.rxgames2.datasource.mappers.simple.SimpleMapper
@@ -21,6 +22,9 @@ class Module02 {
 
     @Provides
     fun provideDataGenerator() = DataSampleGenerator()
+    
+    @Provides
+    fun provideDataGeneratorMaybe() = DataSampleGeneratorMaybe()
 
     @Provides
     fun provideSampleEssentialMapper(subSampleEssentialMapper: SubSampleEssentialMapper) =
