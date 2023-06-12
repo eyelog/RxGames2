@@ -16,7 +16,7 @@ class ViewModelFactory02 @Inject constructor(
     private val dataSampleGeneratorMaybe: DataSampleGeneratorMaybe,
     private val sampleEssentialMapper: SampleEssentialMapper
 ): ViewModelProvider.Factory{
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
         if(modelClass.isAssignableFrom(ViewModel02::class.java)) {
             return ViewModel02(
